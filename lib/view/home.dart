@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:insta_app/model/post.dart';
+import 'package:insta_app/view/view_post.dart';
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   Widget _buildPost(int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -71,23 +79,34 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   
-                  Container(
-                    margin: const EdgeInsets.all(10.0),
-                    width: double.infinity,
-                    height: 350.0,
-
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black45,
-                          offset: Offset(0, 5),
-                          blurRadius: 8.0,
+                  InkWell(
+                    onDoubleTap: () => print('thanks for liking my post'),
+                    onTap: (){
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (_) => ViewPageScreen(userName: posts[index].authorName,),
+                        )
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(10.0),
+                      width: double.infinity,
+                      height: 350.0,
+                  
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25.0),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black45,
+                            offset: Offset(0, 5),
+                            blurRadius: 8.0,
+                          ),
+                        ],
+                        image: DecorationImage(
+                          image: AssetImage(posts[index].imageUrl),
+                          fit: BoxFit.fitWidth,
                         ),
-                      ],
-                      image: DecorationImage(
-                        image: AssetImage(posts[index].imageUrl),
-                        fit: BoxFit.fitWidth,
                       ),
                     ),
                   ),
@@ -159,7 +178,7 @@ class HomePage extends StatelessWidget {
     );
     
   }
-  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
