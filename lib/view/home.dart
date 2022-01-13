@@ -270,6 +270,54 @@ class _HomePageState extends State<HomePage> {
           _buildPost(2),
         ],
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.dashboard,
+              size: 30.0,
+              color: Colors.black,
+            ),
+
+            label: '',
+
+          ),
+          
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 30.0,
+              color: Colors.black,
+            ),
+
+            label: '',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_border,
+              size: 30.0,
+              color: Colors.black,
+            ),
+
+            label: '',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              size: 30.0,
+              color: Colors.black,
+            ),
+
+            label: '',
+          )
+
+        ],
+      )
     );
   }
 }
